@@ -5,49 +5,53 @@
         <h3 class="card-header"><%= list.name %></h3>
 
         <h4 class="card-header"><%= list.createdBy.username %></h4>
-        
-                <h3 class="card-header"><%= list.name %></h3>
-                <div class="card-body">
-                <p class="card-text">Gift: <%= list.gifts %></p>
-                </div>
-                <div class="card-body">
-                <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
-                </div>
-        <div class="card-body">
+        <% list.gifts.forEach(gift => { %>
+          <h4><%= gift.name %></h4>
+          <h4><%= gift.age %></h4>
+          <h4><%= gift.interests %></h4>
+          <h4><%= gift.budget %></h4>
+          <h4><%= gift.ideas %></h4>
+          <div class="card-body">
+          <p class="card-text">Gift: <%= gift.name %></p>
+          </div>
+          <div class="card-body">
+          <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
+          </div>
+          <div class="card-body">
           <a href="/lists" class="btn btn-primary">Back to lists</a>
           <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">Edit list</a>
-        </div>
+          </div>
+          <% }) %>
 
 
-        <% if(locals.isLoggedIn) { %>
-    <form method="POST" action="/lists/<%= list.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="btn btn-primary">Delete list</button>
-    </form>
-    <% } %>
-    <% list.comments.forEach((comment) => { %>
-        <p><%= comment.content %></p>
-        <small><%= comment.createdBy.username %></small>
-
-        <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-          <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
+          <% if(locals.isLoggedIn) { %>
+            <form method="POST" action="/lists/<%= list.id %>">
             <input type="hidden" name="_method" value="DELETE">
-            <button>Delete</button>
-          </form>
-        <% } %>
-      <% }) %>
+            <button class="btn btn-primary">Delete list</button>
+            </form>
+            <% } %>
+            <% list.comments.forEach((comment) => { %>
+              <p><%= comment.content %></p>
+              <small><%= comment.createdBy.username %></small>
+              <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+                <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button>Delete</button>
+                </form>
+                <% } %>
+                <% }) %>
 
-      <% if(locals.isLoggedIn) { %>
-        <section>
-          <h4>Leave a comment</h4>
-          <form method="POST" action="/lists/<%= list.id %>/comments">
-            <textarea name="content" id="content" placeholder="Comment"></textarea>
-            <button class="button">Leave a comment</button>
-          </form>
-        </section>
-      <% } %>
+                <% if(locals.isLoggedIn) { %>
+                  <section>
+                  <h4>Leave a comment</h4>
+                  <form method="POST" action="/lists/<%= list.id %>/comments">
+                  <textarea name="content" id="content" placeholder="Comment"></textarea>
+                  <button class="button">Leave a comment</button>
+                  </form>
+                  </section>
+                  <% } %>
 
-      </div>
-    </div>
-  </div>
-</div>
+                </div>
+              </div>
+            </div>
+          </div>
