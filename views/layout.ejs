@@ -18,28 +18,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
+        <% if (locals.isLoggedIn) { %>
         <li class="nav-item">
           <a class="nav-link" href="/lists">My lists</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/lists/new">Help others</a>
         </li>
-        <% if (locals.isLoggedIn) { %>
         <li class="nav-item">
-          <a class="nav-link" href="/secret">Secret</a>
+          <a class="nav-link" href="/lists">Add a gift</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
-        </li>
-        <% } else { %>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/register">Register</a>
         </li>
         <% } %>
       </ul>
