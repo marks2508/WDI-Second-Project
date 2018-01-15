@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
         <a href="/lists/<%= list.id %>" class="btn btn-primary">Show list</a>
-        <a href="/gifts/new" class="btn btn-primary">Add gift</a>
+        <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
         </div>
         <% }); %>
         <form class="form-group" method="POST" action="/lists">

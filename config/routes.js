@@ -31,6 +31,12 @@ router.route('/lists/:id')
 
 router.get('/lists/:id/edit', secureRoute, lists.edit);
 
+router.route('/lists/:id/comments')
+  .post(lists.createComment);
+
+router.route('/lists/:id/comments/:commentId')
+  .delete(lists.deleteComment);
+
 router.route('/lists/:id/gifts/new')
   .get(lists.newGift);
 

@@ -4,12 +4,14 @@ const bodyParser     = require('body-parser');
 const routes         = require('./config/routes');
 const morgan         = require('morgan');
 const session        = require('express-session');
-const User           = require('./models/user');
 const methodOverride = require('method-override');
 const flash          = require('express-flash');
 const mongoose       = require('mongoose');
 mongoose.Promise     = require('bluebird');
 const app            = express();
+const authentication = require('./lib/authentication');
+const customResponses = require('./lib/customResponses');
+const errorHandler = require('./lib/errorHandler');
 
 const { port, dbURI } = require('./config/environment');
 mongoose.connect(dbURI);
@@ -35,25 +37,12 @@ app.use(session({
   saveUnitialized: false
 }));
 
+app.use(customResponses);
 app.use(flash());
 
-app.use((req, res, next) => {
-  if (!req.session.userId) return next();
-  User
-    .findById(req.session.userId)
-    .exec()
-    .then((user) => {
-      if(!user) {
-        return req.session.regenerate(() => {
-          res.redirect('/');
-        });
-      }
-      res.locals.user = user;
-      res.locals.isLoggedIn = true;
-      next();
-    });
-});
+app.use(authentication);
 
 app.use(routes);
+app.use(errorHandler); // always the last thing after routes
 
 app.listen(port, () => console.log(`Express is listening to port ${port}`));

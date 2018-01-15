@@ -3,7 +3,6 @@ const List = require('../models/list');
 function listsIndex(req, res) {
   List
     .find()
-    .populate('gifts.name')
     .exec()
     .then((lists) => {
       res.render('lists', { lists });
@@ -20,7 +19,7 @@ function listsNew(req, res) {
 function listsShow(req, res) {
   List
     .findById(req.params.id)
-    .populate('gifts.name')
+    .populate('createdBy')
     .exec()
     .then((list) => {
       if(!list) return res.status(404).send('Not found');
@@ -32,6 +31,7 @@ function listsShow(req, res) {
 }
 
 function listsCreate(req, res) {
+  req.body.createdBy = req.user; // attaching the whole user obj to the req.body
   List
     .create(req.body)
     .then((list) => {
@@ -91,8 +91,55 @@ function listsDelete(req, res) {
 }
 
 function newGiftRoute(req,res) {
-  res.render('/lists/new');
+  List
+    .findById(req.params.id)
+    .exec()
+    .then((list) => {
+      if(!list) return res.status(404).send('Not found');
+      res.render('gifts/new', { list });
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
 }
+
+function createCommentRoute(req,res,next) {
+  req.body.createdBy = req.user;
+  List
+    .findById(req.params.id)
+    .exec()
+    .then((list) => {
+      if(!list) return res.notFound();
+      list.comments.push(req.body);
+      return list.save();
+    })
+    .then((list) => {
+      res.redirect(`/lists/${list.id}`);
+    })
+    .catch((err) => {
+      if(err.name === 'ValidationError') {
+        return res.badRequest(`/lists/${req.params.id}`, err.toString());
+      }
+      next(err);
+    });
+}
+
+function deleteCommentRoute(req,res,next) {
+  List
+    .findById(req.params.id)
+    .exec()
+    .then((list) => {
+      if(!list) return res.notFound();
+      const comment = list.comments.id(req.params.commentId);
+      comment.remove();
+      return list.save();
+    })
+    .then((list) => {
+      res.redirect(`/lists/${list.id}`);
+    })
+    .catch(next);
+}
+
 
 function createGiftRoute(req,res, next) {
   List
@@ -133,6 +180,8 @@ module.exports = {
   update: listsUpdate,
   delete: listsDelete,
   newGift: newGiftRoute,
+  createComment: createCommentRoute,
+  deleteComment: deleteCommentRoute,
   createGift: createGiftRoute,
   deleteGift: deleteGiftRoute
 };
