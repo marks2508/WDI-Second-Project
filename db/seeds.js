@@ -39,15 +39,6 @@ List
   }])
   .then((lists) => {
     console.log(`${lists.length} lists created!`);
-    return User
-      .create([{
-        username: 'M',
-        email: 'm@m',
-        password: 'password'
-      }]);
-  })
-  .then((users) => {
-    console.log(`${users.length} users created`);
   })
   .catch((err) => {
     console.log(err);
