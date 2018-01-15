@@ -3,19 +3,24 @@
     <div class="col-md-4"
     <div class="card" style="width: 18rem;">
       <% lists.forEach((list) => { %>
-        <h3 class="card-header"><%= list.country %></h3>
-        <img class="card-img-top" src="<%= list.image %>" alt="Card image cap">
+
+        <h3 class="card-header"><%= list.name %></h3>
         <div class="card-body">
-        <p class="card-text">Year adopted: <%= list.adopted %></p>
+        <p class="card-text">Gift: <%= list.gifts %></p>
         </div>
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item">Flag notes: <%= list.listNote %></li>
-        <li class="list-group-item">Historical notes: <%= list.countryNote %></li>
-        </ul>
         <div class="card-body">
-        <a href="/lists/<%= list.id %>" class="btn btn-primary">Show card</a>
+        <a href="/lists/<%= list.id %>" class="btn btn-primary">Show list</a>
+        <a href="/gifts/new" class="btn btn-primary">Add gift</a>
         </div>
         <% }); %>
+        <form class="form-group" method="POST" action="/lists">
+          <div>
+            <h1>Make a new list</h1>
+            <label for="name">name of list</label>
+            <input class="form-control" type="text" name="name" id="name">
+          </div>
+            <button class="btn btn-primary">Create</button>
+          </form>
       </div>
     </div>
   </div>

@@ -1,10 +1,18 @@
 const mongoose = require('mongoose');
-const listSchema = new mongoose.Schema({
-  country: {type: String, required: true},
-  image: {type: String},
-  adopted: {type: Number, required: true},
-  flagNote: {type: String},
-  countryNote: {type: String}
+
+const giftSchema = new mongoose.Schema({
+  name: {type: String},
+  age: {type: Number},
+  interests: {type: String},
+  budget: {type: Number},
+  ideas: {type: String}
 });
+
+
+const listSchema = new mongoose.Schema({
+  name: {type: String},
+  gifts: [giftSchema]
+});
+
 
 module.exports = mongoose.model('List', listSchema);

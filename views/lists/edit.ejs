@@ -1,39 +1,22 @@
 <h1>Edit a list</h1>
 <div class="container">
-<div class="row">
-  <div class="col-md-4">
-  <form class="form-group" method="POST" action="/lists/<%= list.id %>">
-    <input type="hidden" name="_method" value="PUT">
-
-    <div>
-      <label for="country">Country: </label>
-      <input class="form-control" type="text" name="country" id="country" value="<%= list.country %>">
+  <div class="row">
+    <div class="col-md-4">
+      <form class="form-group" method="POST" action="/lists/<%= list.id %>">
+        <input type="hidden" name="_method" value="PUT">
+        <div>
+          <label for="name">Name: </label>
+          <input class="form-control" type="text" name="name" id="name" value="<%= list.name %>">
+        </div>
+        <a href="/lists" class="btn btn-primary">Back to lists</a>
+        <button class="btn btn-primary">Update</button>
+      </form>
+        </div>
+      </div>
     </div>
-
-    <div>
-      <label for="image">Link to new image</label>
-      <input type="text" class="form-control" value="<%= list.image %>" name="image" id="image">
-    </div>
-    <div>
-      <img src="<%= list.image %>" alt="<%= list.country %>">
-    </div>
-    <div>
-      <label for="adopted">Adopted:</label>
-      <input class="form-control" type="text" name="adopted" id="adopted" value="<%= list.adopted %>">
-    </div>
-    <div>
-      <label for="listNote">Flag fact:</label>
-      <input class="form-control" type="text" name="listNote" id="listNote" value="<%= list.listNote %>">
-    </div>
-    <div>
-      <label for="countryNote">Historical face:</label>
-      <input class="form-control" type="text" name="countryNote" id="countryNote" value="<%= list.countryNote %>">
-    </div>
-    <button class="btn btn-primary">Make Changes</button>
-    </form>
     <form class="form-group" method="POST" action="/lists/<%= list.id %>">
       <input class="btn btn-primary" type="hidden" name="_method" value="DELETE">
       <button class="btn btn-primary">Delete</button>
     </form>
-</div>
+  </div>
 </div>

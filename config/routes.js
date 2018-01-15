@@ -31,6 +31,15 @@ router.route('/lists/:id')
 
 router.get('/lists/:id/edit', secureRoute, lists.edit);
 
+router.route('/lists/:id/gifts/new')
+  .get(lists.newGift);
+
+router.route('/lists/:id/gifts')
+  .post(lists.createGift);
+
+router.route('/lists/:id/gifts/:giftId')
+  .delete(lists.deleteGift);
+
 router.route('/register')
   .get(registrations.new) // Render the register form
   .post(registrations.create); // Handle the submit of the register form

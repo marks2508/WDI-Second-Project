@@ -10,16 +10,6 @@
           <a href="/lists" class="btn btn-primary">Back to lists</a>
           <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">Edit list</a>
         </div>
-        <% if(locals.isLoggedIn) { %>
-    <form method="POST" action="/lists/<%= list.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="btn btn-primary">Delete list</button>
-    </form>
-    <% } %>
-
-    <% list.gifts.forEach((gift) => { %>
-      <p><%= gift.name %></p>
-    <% }) %>
       </div>
     </div>
   </div>

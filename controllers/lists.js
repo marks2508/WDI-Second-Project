@@ -3,6 +3,7 @@ const List = require('../models/list');
 function listsIndex(req, res) {
   List
     .find()
+    .populate('gifts.name')
     .exec()
     .then((lists) => {
       res.render('lists', { lists });
@@ -19,6 +20,7 @@ function listsNew(req, res) {
 function listsShow(req, res) {
   List
     .findById(req.params.id)
+    .populate('gifts.name')
     .exec()
     .then((list) => {
       if(!list) return res.status(404).send('Not found');
@@ -33,7 +35,7 @@ function listsCreate(req, res) {
   List
     .create(req.body)
     .then((list) => {
-      req.flash('success', `${list.country} has been added`);
+      req.flash('success', `${list.name} has been added`);
       res.redirect('/lists'); // redirect user back to the index page
     })
     .catch((err) => {
@@ -64,7 +66,7 @@ function listsUpdate(req, res) {
       return list.save();
     })
     .then((list) => {
-      req.flash('success', `${list.country} has been edited`);
+      req.flash('success', `${list.name} has been edited`);
       res.redirect(`/lists/${list.id}`);
     })
     .catch((err) => {
@@ -88,6 +90,40 @@ function listsDelete(req, res) {
     });
 }
 
+function newGiftRoute(req,res) {
+  res.render('/lists/new');
+}
+
+function createGiftRoute(req,res, next) {
+  List
+    .findById(req.params.id)
+    .exec()
+    .then(list => {
+      if (!list) return res.notFound();
+      list.gifts.push(req.body);
+      return list.save();
+    })
+    .then(() => res.redirect(`/lists/${req.params.id}`))
+    .catch((err) => {
+      if (err.name === 'ValidationError') res.badRequest(`/lists/${req.params.id}`, err.toString());
+      next(err);
+    });
+}
+
+function deleteGiftRoute(req, res, next) {
+  List
+    .findById(req.params.id)
+    .exec()
+    .then(list => {
+      if (!list) return res.notFound();
+      const gift = list.gifts.id(req.params.giftId);
+      gift.remove();
+      return list.save();
+    })
+    .then(list => res.redirect(`/lists/${list.id}`))
+    .catch(next);
+}
+
 module.exports = {
   index: listsIndex,
   new: listsNew,
@@ -95,5 +131,8 @@ module.exports = {
   create: listsCreate,
   edit: listsEdit,
   update: listsUpdate,
-  delete: listsDelete
+  delete: listsDelete,
+  newGift: newGiftRoute,
+  createGift: createGiftRoute,
+  deleteGift: deleteGiftRoute
 };
