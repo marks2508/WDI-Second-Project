@@ -13,16 +13,45 @@
         <h4>Ideas: <%= gift.ideas %></h4>
         <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">edit gift</a>
         <button class="btn btn-primary" onclick="goBack()">back</button>
-          <script>
-            function goBack() {
-              window.history.back();
-            }
-          </script>
+        <script>
+        function goBack() {
+          window.history.back();
+        }
+        </script>
         <form method="POST" action="/lists/<%= list.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button class="btn btn-primary">Delete gift</button>
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-primary">Delete gift</button>
         </form>
-      </div>
-    </div>
-  </div>
-</div>
+        <% list.comments.forEach((comment) => { %>
+          <p><%= comment.content %></p>
+          <p><%= comment.createdBy.username %></p>
+          <% if(locals.isLoggedIn) { %>
+            <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button>Delete</button>
+            </form>
+            <% } %>
+            <% }) %>
+
+            <% if(locals.isLoggedIn) { %>
+              <section>
+              <h4>Make a suggestion: </h4>
+              <form method="POST" action="/lists/<%= list.id %>/comments">
+              <textarea name="content" id="content" placeholder="Suggestion"></textarea>
+              <button class="button">Add</button>
+              </form>
+              </section>
+              <% } %>                     <% if(locals.isLoggedIn) { %>
+                <section>
+                <h4>Make a suggestion: </h4>
+                <form method="POST" action="/lists/<%= list.id %>/comments">
+                <textarea name="content" id="content" placeholder="Suggestion"></textarea>
+                <button class="button">Add</button>
+                </form>
+                </section>
+                <% } %>
+
+              </div>
+            </div>
+          </div>
+        </div>
