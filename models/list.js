@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const giftSchema = new mongoose.Schema({
   name: {type: String},
   age: {type: Number},
-  interests: {type: String},
+  interests: {type: Array},
   budget: {type: Number},
-  ideas: {type: String}
+  ideas: {type: Array}
 });
 
 const commentSchema = new mongoose.Schema({
