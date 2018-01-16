@@ -4,16 +4,11 @@
     <div class="col-md-4">
       <div class="card" style="width: 18rem;">
         <h3 class="card-header"><%= list.name %></h3>
-        <h4 class="card-header">Created by: <%= list.createdBy.username %></h4>
         <% list.gifts.forEach(gift => { %>
           <div class="card-body"
           <h4>Who for: <%= gift.name %></h4>
-          <h4>Their age: <%= gift.age %></h4>
-          <h4>Their interests: <%= gift.interests %></h4>
-          <h4>Budget: <%= gift.budget %></h4>
-          <h4>Ideas: <%= gift.ideas %></h4>
-          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">Edit gift</a>
           <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-primary">See gift</a>
+          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">Edit gift</a>
           </div>
           <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
             <form method="POST" action="/lists/<%= list.id %>">

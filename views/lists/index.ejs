@@ -9,7 +9,7 @@
         <p class="card-text">Gift: <%= list.gifts.length %></p>
         </div>
         <div class="card-body">
-        <a href="/lists/<%= list.id %>" class="btn btn-primary">Show list</a>
+        <a href="/lists/<%= list.id %>" class="btn btn-primary">See list</a>
         <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
         <form method="POST" action="/lists/<%= list.id %>">
         <input type="hidden" name="_method" value="DELETE">
@@ -20,7 +20,7 @@
         <form class="form-group" method="POST" action="/lists">
           <div>
             <h1>Make a new list</h1>
-            <label for="name">name of list</label>
+            <label for="name">Name of list:</label>
             <input class="form-control" type="text" name="name" id="name">
           </div>
             <button class="btn btn-primary">Create</button>
