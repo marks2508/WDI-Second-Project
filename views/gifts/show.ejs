@@ -1,15 +1,17 @@
+<h1>SHow</h1>
+
+
 <div class="container">
   <div class="row">
     <div class="col-md-4">
       <div class="card" style="width: 18rem;">
-        <h3 class="card-header"><%= gift.name %></h3>
-        <div class="card-body">
-          <p class="card-text">Items: <%= gift.name %></p>
-        </div>
-        <div class="card-body">
-          <a href="/lists" class="btn btn-primary">Back to lists</a>
-          <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">Edit list</a>
-        </div>
+        <div class="card-body"
+        <h4>Who for: <%= gift.name %></h4>
+        <h4>Their age: <%= gift.age %></h4>
+        <h4>Their interests: <%= gift.interests %></h4>
+        <h4>Budget: <%= gift.budget %></h4>
+        <h4>Ideas: <%= gift.ideas %></h4>
+        <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">Edit gift</a>
       </div>
     </div>
   </div>

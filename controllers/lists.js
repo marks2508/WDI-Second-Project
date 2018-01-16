@@ -203,6 +203,20 @@ function deleteGiftRoute(req, res, next) {
     .catch(next);
 }
 
+function showGiftRoute(req, res, next) {
+  List
+    .findById(req.params.id)
+    .exec()
+    .then(list => {
+      const gift = list.gifts.id(req.params.giftId);
+      console.log(gift);
+      res.render('gifts/show', {gift, list});
+    })
+    .catch(next);
+}
+
+
+
 module.exports = {
   index: listsIndex,
   new: listsNew,
@@ -217,7 +231,8 @@ module.exports = {
   createGift: createGiftRoute,
   editGift: editGiftRoute,
   deleteGift: deleteGiftRoute,
-  updateGift: updateGiftRoute
+  updateGift: updateGiftRoute,
+  showGift: showGiftRoute
 };
 
 

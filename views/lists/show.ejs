@@ -1,31 +1,19 @@
+
 <div class="container">
   <div class="row">
     <div class="col-md-4">
       <div class="card" style="width: 18rem;">
         <h3 class="card-header"><%= list.name %></h3>
-
-        <h4 class="card-header"><%= list.createdBy.username %></h4>
+        <h4 class="card-header">Created by: <%= list.createdBy.username %></h4>
         <% list.gifts.forEach(gift => { %>
           <h4>Who for: <%= gift.name %></h4>
           <h4>Their age: <%= gift.age %></h4>
           <h4>Their interests: <%= gift.interests %></h4>
           <h4>Budget: <%= gift.budget %></h4>
           <h4>Ideas: <%= gift.ideas %></h4>
-          <div class="card-body">
-          </div>
           <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">Edit gift</a>
-
-          <% }) %>
-          <div class="card-body">
-            <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
+          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-primary">See gift</a>
           </div>
-          <div class="card-body">
-            <a href="/lists" class="btn btn-primary">Back to lists</a>
-            <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">Edit list</a>
-
-          </div>
-
-
           <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
             <form method="POST" action="/lists/<%= list.id %>">
             <input type="hidden" name="_method" value="DELETE">
@@ -34,26 +22,19 @@
             <% } %>
 
 
-            <% list.comments.forEach((comment) => { %>
-              <p><%= comment.content %></p>
-              <p><%= comment.createdBy.username %></p>
-              <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-                <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
-                <input type="hidden" name="_method" value="DELETE">
-                <button>Delete</button>
-                </form>
-                <% } %>
-                <% }) %>
+            
 
-                <% if(locals.isLoggedIn) { %>
-                  <section>
-                  <h4>Make a suggestion: </h4>
-                  <form method="POST" action="/lists/<%= list.id %>/comments">
-                  <textarea name="content" id="content" placeholder="Suggestion"></textarea>
-                  <button class="button">Add</button>
-                  </form>
-                  </section>
-                  <% } %>
+
+                  <% }) %>
+                  <div class="card-body">
+                    <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
+                    <a href="/lists" class="btn btn-primary">Back to lists</a>
+                    <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">Edit list</a>
+                  </div>
+
+
+
+
 
                 </div>
               </div>
