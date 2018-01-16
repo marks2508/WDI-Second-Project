@@ -1,4 +1,4 @@
-<h1>SHow</h1>
+<h1><%= gift.name %></h1>
 
 
 <div class="container">
@@ -14,7 +14,7 @@
         <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">Edit gift</a>
         <form method="POST" action="/lists/<%= list.id %>">
         <input type="hidden" name="_method" value="DELETE">
-        <button class="btn btn-primary">Delete list</button>
+        <button class="btn btn-primary">Delete gift</button>
         </form>
       </div>
     </div>

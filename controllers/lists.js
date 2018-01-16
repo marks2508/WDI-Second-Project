@@ -209,7 +209,6 @@ function showGiftRoute(req, res, next) {
     .exec()
     .then(list => {
       const gift = list.gifts.id(req.params.giftId);
-      console.log(gift);
       res.render('gifts/show', {gift, list});
     })
     .catch(next);

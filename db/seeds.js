@@ -38,6 +38,6 @@ User
         createdBy: users[0]
       }]);
   })
-  .then((lists) => console.log(`${lists.length} hotels created`))
+  .then((lists) => console.log(`${lists.length} lists created`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
