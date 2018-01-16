@@ -1,22 +1,22 @@
-<h1>Edit a gift</h1>
+<h1>Edit a list</h1>
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <form class="form-group" method="POST" action="/lists/<%= list.id %>">
+      <form class="form-group" method="POST" action="/lists/<%= listId %>/gifts/<%= gift.id %>">
         <input type="hidden" name="_method" value="PUT">
         <div>
-          <label for="name">Name: </label>
-          <input class="form-control" type="text" name="name" id="name" value="<%= list.name %>">
+          <label for="name">Name:</label>
+          <input class="form-control" type="text" name="name" id="name" value="<%= gift.name %>" placeholder="<%= gift.id %>">
         </div>
         <a href="/lists" class="btn btn-primary">Back to lists</a>
         <button class="btn btn-primary">Update</button>
       </form>
+        </div>
+      </div>
     </div>
+    <form class="form-group" method="POST" action="/lists/<%= listId %>/gifts/<%= gift.id %>">
+      <input class="btn btn-primary" type="hidden" name="_method" value="DELETE">
+      <button class="btn btn-primary">Delete</button>
+    </form>
   </div>
-</div>
-<form class="form-group" method="POST" action="/lists/<%= list.id %>">
-  <input class="btn btn-primary" type="hidden" name="_method" value="DELETE">
-  <button class="btn btn-primary">Delete</button>
-</form>
-</div>
 </div>

@@ -1,4 +1,5 @@
 const List = require('../models/list');
+const Gift = require('../models/list');
 
 function listsIndex(req, res) {
   List
@@ -159,20 +160,43 @@ function createGiftRoute(req,res, next) {
 }
 
 function editGiftRoute(req,res) {
-  List
+  req.params.id;
+  req.params.giftId;
+  Gift
     .findById(req.params.id)
     .exec()
     .then((list) => {
       if(!list) return res.status(404).send('Not found');
-      res.render('gifts/edit', { list });
+      res.render('gifts/edit', { gift: req.params.id, listId: req.params.id });
     })
     .catch((err) => {
       res.status(500).render('error', { err });
     });
 }
 
+
+function giftUpdateRoute(req, res) {
+  Gift
+    .findById(req.params.id)
+    .exec()
+    .then((list) => {
+      if(!list) return res.status(404).send('Not found');
+      gift = Object.assign(gift, req.body);
+      return gift.save();
+    })
+    .then((gift) => {
+      req.flash('success', `${gift} has been edited`);
+      res.redirect(`/lists/${list.id}`);
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+}
+
+
+
 function deleteGiftRoute(req, res, next) {
-  List
+  Gift
     .findById(req.params.id)
     .exec()
     .then(list => {
@@ -198,7 +222,8 @@ module.exports = {
   deleteComment: deleteCommentRoute,
   createGift: createGiftRoute,
   editGift: editGiftRoute,
-  deleteGift: deleteGiftRoute
+  deleteGift: deleteGiftRoute,
+  updateGift: giftUpdateRoute
 };
 
 

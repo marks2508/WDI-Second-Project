@@ -6,14 +6,14 @@
 
         <h4 class="card-header"><%= list.createdBy.username %></h4>
         <% list.gifts.forEach(gift => { %>
-          <h4>For: <%= gift.name %></h4>
-          <h4>Age: <%= gift.age %></h4>
-          <h4>Interests: <%= gift.interests %></h4>
+          <h4>Who for: <%= gift.name %></h4>
+          <h4>Their age: <%= gift.age %></h4>
+          <h4>Their interests: <%= gift.interests %></h4>
           <h4>Budget: <%= gift.budget %></h4>
           <h4>Ideas: <%= gift.ideas %></h4>
           <div class="card-body">
           </div>
-          <a href="/lists/<%= list.id %>/gifts/edit" class="btn btn-primary">Edit gift</a>
+          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">Edit gift</a>
 
           <% }) %>
           <div class="card-body">
@@ -26,7 +26,7 @@
           </div>
 
 
-          <% if(locals.isLoggedIn) { %>
+          <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
             <form method="POST" action="/lists/<%= list.id %>">
             <input type="hidden" name="_method" value="DELETE">
             <button class="btn btn-primary">Delete list</button>
@@ -36,7 +36,7 @@
 
             <% list.comments.forEach((comment) => { %>
               <p><%= comment.content %></p>
-              <small><%= comment.createdBy.username %></small>
+              <p><%= comment.createdBy.username %></p>
               <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
                 <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
                 <input type="hidden" name="_method" value="DELETE">
@@ -47,10 +47,10 @@
 
                 <% if(locals.isLoggedIn) { %>
                   <section>
-                  <h4>Leave a comment</h4>
+                  <h4>Make a suggestion: </h4>
                   <form method="POST" action="/lists/<%= list.id %>/comments">
-                  <textarea name="content" id="content" placeholder="Comment"></textarea>
-                  <button class="button">Leave a comment</button>
+                  <textarea name="content" id="content" placeholder="Suggestion"></textarea>
+                  <button class="button">Add</button>
                   </form>
                   </section>
                   <% } %>

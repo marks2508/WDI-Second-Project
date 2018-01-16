@@ -14,7 +14,7 @@ const commentSchema = new mongoose.Schema({
 });
 
 commentSchema.methods.belongsTo = function commentBelongsTo(user) {
-  return this.createdBy.id === user.ud;
+  return this.createdBy.id === user.id;
 };
 
 const listSchema = new mongoose.Schema({
