@@ -47,10 +47,9 @@ router.route('/lists/:id/gifts/:giftId/edit')
   .get(lists.editGift);
 
 router.route('/lists/:id/gifts/:giftId')
-  .put(lists.updateGift);
-
-router.route('/lists/:id/gifts/:giftId')
+  .put(lists.updateGift)
   .delete(lists.deleteGift);
+
 
 router.route('/register')
   .get(registrations.new) // Render the register form

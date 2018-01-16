@@ -4,9 +4,26 @@
     <div class="col-md-4">
       <form class="form-group" method="POST" action="/lists/<%= listId %>/gifts/<%= gift.id %>">
         <input type="hidden" name="_method" value="PUT">
+        
         <div>
           <label for="name">Name:</label>
-          <input class="form-control" type="text" name="name" id="name" value="<%= gift.name %>" placeholder="<%= gift.id %>">
+          <input class="form-control" type="text" name="name" id="name" value="<%= gift.name %>">
+        </div>
+        <div>
+          <label for="age">Age:</label>
+          <input class="form-control" type="text" name="age" id="age" value="<%= gift.age %>">
+        </div>
+        <div>
+          <label for="interests">Interests:</label>
+          <input class="form-control" type="text" name="interests" id="interests" value="<%= gift.interests %>">
+        </div>
+        <div>
+          <label for="budget">Budget:</label>
+          <input class="form-control" type="text" name="budget" id="budget" value="<%= gift.budget %>">
+        </div>
+        <div>
+          <label for="ideas">Ideas:</label>
+          <input class="form-control" type="text" name="ideas" id="ideas" value="<%= gift.ideas %>">
         </div>
         <a href="/lists" class="btn btn-primary">Back to lists</a>
         <button class="btn btn-primary">Update</button>

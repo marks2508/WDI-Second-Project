@@ -159,41 +159,35 @@ function createGiftRoute(req,res, next) {
     });
 }
 
-function editGiftRoute(req,res) {
-  req.params.id;
-  req.params.giftId;
-  Gift
+function editGiftRoute(req, res, next) {
+  List
     .findById(req.params.id)
     .exec()
-    .then((list) => {
-      if(!list) return res.status(404).send('Not found');
-      res.render('gifts/edit', { gift: req.params.id, listId: req.params.id });
+    .then(list => {
+      const gift = list.gifts.id(req.params.giftId);
+
+      res.render('gifts/edit', { gift, listId: list.id });
     })
-    .catch((err) => {
-      res.status(500).render('error', { err });
-    });
+    .catch(next);
+
 }
 
-
-function giftUpdateRoute(req, res) {
-  Gift
+function updateGiftRoute(req, res, next) {
+  List
     .findById(req.params.id)
     .exec()
-    .then((list) => {
-      if(!list) return res.status(404).send('Not found');
-      gift = Object.assign(gift, req.body);
-      return gift.save();
+    .then(list => {
+      const gift = list.gifts.id(req.params.giftId);
+
+      for (const field in req.body) {
+        gift[field] = req.body[field];
+      }
+
+      return list.save();
     })
-    .then((gift) => {
-      req.flash('success', `${gift} has been edited`);
-      res.redirect(`/lists/${list.id}`);
-    })
-    .catch((err) => {
-      res.status(500).render('error', { err });
-    });
+    .then(list => res.redirect(`/lists/${list.id}`))
+    .catch(next);
 }
-
-
 
 function deleteGiftRoute(req, res, next) {
   Gift
@@ -223,7 +217,7 @@ module.exports = {
   createGift: createGiftRoute,
   editGift: editGiftRoute,
   deleteGift: deleteGiftRoute,
-  updateGift: giftUpdateRoute
+  updateGift: updateGiftRoute
 };
 
 
