@@ -1,16 +1,22 @@
+<h1>Edit a gift</h1>
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <div class="card" style="width: 18rem;">
-        <h3 class="card-header"><%= list.name %></h3>
-        <div class="card-body">
-          <p class="card-text">Items: <%= list.gifts %></p>
+      <form class="form-group" method="POST" action="/lists/<%= list.id %>">
+        <input type="hidden" name="_method" value="PUT">
+        <div>
+          <label for="name">Name: </label>
+          <input class="form-control" type="text" name="name" id="name" value="<%= list.name %>">
         </div>
-        <div class="card-body">
-          <a href="/lists" class="btn btn-primary">Back to lists</a>
-          <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">Edit list</a>
-        </div>
-      </div>
+        <a href="/lists" class="btn btn-primary">Back to lists</a>
+        <button class="btn btn-primary">Update</button>
+      </form>
     </div>
   </div>
+</div>
+<form class="form-group" method="POST" action="/lists/<%= list.id %>">
+  <input class="btn btn-primary" type="hidden" name="_method" value="DELETE">
+  <button class="btn btn-primary">Delete</button>
+</form>
+</div>
 </div>

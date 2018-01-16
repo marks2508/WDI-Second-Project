@@ -90,18 +90,7 @@ function listsDelete(req, res) {
     });
 }
 
-function newGiftRoute(req,res) {
-  List
-    .findById(req.params.id)
-    .exec()
-    .then((list) => {
-      if(!list) return res.status(404).send('Not found');
-      res.render('gifts/new', { list });
-    })
-    .catch((err) => {
-      res.status(500).render('error', { err });
-    });
-}
+
 
 function createCommentRoute(req,res,next) {
   req.body.createdBy = req.user;
@@ -140,6 +129,18 @@ function deleteCommentRoute(req,res,next) {
     .catch(next);
 }
 
+function newGiftRoute(req,res) {
+  List
+    .findById(req.params.id)
+    .exec()
+    .then((list) => {
+      if(!list) return res.status(404).send('Not found');
+      res.render('gifts/new', { list });
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+}
 
 function createGiftRoute(req,res, next) {
   List
@@ -154,6 +155,19 @@ function createGiftRoute(req,res, next) {
     .catch((err) => {
       if (err.name === 'ValidationError') res.badRequest(`/lists/${req.params.id}`, err.toString());
       next(err);
+    });
+}
+
+function editGiftRoute(req,res) {
+  List
+    .findById(req.params.id)
+    .exec()
+    .then((list) => {
+      if(!list) return res.status(404).send('Not found');
+      res.render('gifts/edit', { list });
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
     });
 }
 
@@ -183,5 +197,17 @@ module.exports = {
   createComment: createCommentRoute,
   deleteComment: deleteCommentRoute,
   createGift: createGiftRoute,
+  editGift: editGiftRoute,
   deleteGift: deleteGiftRoute
 };
+
+
+// .findById(req.params.id)
+// .exec()
+// .then((list) => {
+//   if(!list) return res.status(404).send('Not found');
+//   res.render('gifts/edit', { list });
+// })
+// .catch((err) => {
+//   res.status(500).render('error', { err });
+// });

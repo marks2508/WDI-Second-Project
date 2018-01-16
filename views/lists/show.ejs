@@ -6,22 +6,24 @@
 
         <h4 class="card-header"><%= list.createdBy.username %></h4>
         <% list.gifts.forEach(gift => { %>
-          <h4><%= gift.name %></h4>
-          <h4><%= gift.age %></h4>
-          <h4><%= gift.interests %></h4>
-          <h4><%= gift.budget %></h4>
-          <h4><%= gift.ideas %></h4>
+          <h4>For: <%= gift.name %></h4>
+          <h4>Age: <%= gift.age %></h4>
+          <h4>Interests: <%= gift.interests %></h4>
+          <h4>Budget: <%= gift.budget %></h4>
+          <h4>Ideas: <%= gift.ideas %></h4>
           <div class="card-body">
-          <p class="card-text">Gift: <%= gift.name %></p>
           </div>
-          <div class="card-body">
-          <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
-          </div>
-          <div class="card-body">
-          <a href="/lists" class="btn btn-primary">Back to lists</a>
-          <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">Edit list</a>
-          </div>
+          <a href="/lists/<%= list.id %>/gifts/edit" class="btn btn-primary">Edit gift</a>
+
           <% }) %>
+          <div class="card-body">
+            <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
+          </div>
+          <div class="card-body">
+            <a href="/lists" class="btn btn-primary">Back to lists</a>
+            <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">Edit list</a>
+
+          </div>
 
 
           <% if(locals.isLoggedIn) { %>
@@ -30,6 +32,8 @@
             <button class="btn btn-primary">Delete list</button>
             </form>
             <% } %>
+
+
             <% list.comments.forEach((comment) => { %>
               <p><%= comment.content %></p>
               <small><%= comment.createdBy.username %></small>

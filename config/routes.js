@@ -43,6 +43,10 @@ router.route('/lists/:id/gifts/new')
 router.route('/lists/:id/gifts')
   .post(lists.createGift);
 
+router.route('lists/:id/gifts/:giftId/edit')
+  .get(lists.editGift);
+
+
 router.route('/lists/:id/gifts/:giftId')
   .delete(lists.deleteGift);
 
