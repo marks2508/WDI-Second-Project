@@ -9,11 +9,11 @@
         <p class="card-text">Gift: <%= list.gifts.length %></p>
         </div>
         <div class="card-body">
-        <a href="/lists/<%= list.id %>" class="btn btn-primary">See list</a>
-        <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
+        <a href="/lists/<%= list.id %>" class="btn btn-primary">see list</a>
+        <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">add gift</a>
         <form method="POST" action="/lists/<%= list.id %>">
         <input type="hidden" name="_method" value="DELETE">
-        <button class="btn btn-primary">Delete list</button>
+        <button class="btn btn-primary">delete list</button>
         </form>
         </div>
         <% }); %>

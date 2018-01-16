@@ -1,4 +1,6 @@
 
+
+
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -6,44 +8,19 @@
         <h3 class="card-header"><%= list.name %></h3>
         <% list.gifts.forEach(gift => { %>
           <div class="card-body"
-          <h4>Who for: <%= gift.name %></h4>
-          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-primary">See gift</a>
-          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">Edit gift</a>
+          <h4><%= gift.name %></h4>
+          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-primary">see gift</a>
+          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">edit gift</a>
           </div>
-          <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
-            <form method="POST" action="/lists/<%= list.id %>">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-primary">Delete list</button>
-            </form>
-            <% } %>
 
 
-            <% list.comments.forEach((comment) => { %>
-              <p><%= comment.content %></p>
-              <p><%= comment.createdBy.username %></p>
-              <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-                <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
-                <input type="hidden" name="_method" value="DELETE">
-                <button>Delete</button>
-                </form>
-                <% } %>
-                <% }) %>
 
-                <% if(locals.isLoggedIn) { %>
-                  <section>
-                  <h4>Make a suggestion: </h4>
-                  <form method="POST" action="/lists/<%= list.id %>/comments">
-                  <textarea name="content" id="content" placeholder="Suggestion"></textarea>
-                  <button class="button">Add</button>
-                  </form>
-                  </section>
-                  <% } %>
 
                   <% }) %>
                   <div class="card-body">
-                    <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">Add gift</a>
-                    <a href="/lists" class="btn btn-primary">Back to lists</a>
-                    <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">Edit list</a>
+                    <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary">add gift</a>
+                    <a href="/lists" class="btn btn-primary">back to lists</a>
+                    <a href="/lists/<%= list.id %>/edit" class="btn btn-primary">rename list</a>
                   </div>
                   <div class="card-body">
 

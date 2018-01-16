@@ -11,7 +11,13 @@
         <h4>Their interests: <%= gift.interests %></h4>
         <h4>Budget: <%= gift.budget %></h4>
         <h4>Ideas: <%= gift.ideas %></h4>
-        <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">Edit gift</a>
+        <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">edit gift</a>
+        <button class="btn btn-primary" onclick="goBack()">back</button>
+          <script>
+            function goBack() {
+              window.history.back();
+            }
+          </script>
         <form method="POST" action="/lists/<%= list.id %>">
         <input type="hidden" name="_method" value="DELETE">
         <button class="btn btn-primary">Delete gift</button>
