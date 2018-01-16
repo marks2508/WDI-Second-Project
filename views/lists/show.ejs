@@ -13,7 +13,7 @@
           <h4>Budget: <%= gift.budget %></h4>
           <h4>Ideas: <%= gift.ideas %></h4>
           <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">Edit gift</a>
-          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/show" class="btn btn-primary">See gift</a>
+          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-primary">See gift</a>
           </div>
           <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
             <form method="POST" action="/lists/<%= list.id %>">
