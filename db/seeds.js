@@ -32,10 +32,13 @@ User
     return List
       .create([{
         name: 'Christmas',
-        createdBy: users[0]
+        createdBy: users[1]
       },{
         name: 'Birthday',
-        createdBy: users[0]
+        createdBy: users[1]
+      }, {
+        name: 'Anniverseries',
+        createdBy: users[1]
       }]);
   })
   .then((lists) => console.log(`${lists.length} lists created`))
