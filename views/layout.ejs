@@ -13,7 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script></head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Gift Lists</a>
+    <a class="navbar-brand"><i class="fa fa-gift" aria-hidden="true"></i> Gift List</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,19 +21,13 @@
       <ul class="navbar-nav">
         <% if (locals.isLoggedIn) { %>
         <li class="nav-item">
-          <a class="nav-link" href="/users">Users</a>
+          <a class="nav-link" href="/users">Help others</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/lists">My lists</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/lists/help">Help others</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/gifts/new">Add a gift</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
+          <a class="nav-link" href="/logout"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
         </li>
         <% } %>
       </ul>

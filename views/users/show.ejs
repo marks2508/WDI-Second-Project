@@ -7,4 +7,10 @@
   <div class="card-body"
   <h4><%= list.name %></h4>
   <a href="/lists/<%= list.id %>" class="btn btn-primary">See list</a>
+  <button class="btn btn-primary" onclick="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>
 <% }) %>

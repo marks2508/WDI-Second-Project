@@ -6,43 +6,44 @@
     <div class="col-md-4">
       <div class="card" style="width: 18rem;">
         <div class="card-body"
-        <h4>Who for: <%= gift.name %></h4>
+        <h2>Who for: <%= gift.name %></h4>
         <h4>Their age: <%= gift.age %></h4>
         <h4>Their interests: <%= gift.interests %></h4>
         <h4>Budget: <%= gift.budget %></h4>
         <h4>Ideas: <%= gift.ideas %></h4>
-        <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">edit gift</a>
-        <button class="btn btn-primary" onclick="goBack()">back</button>
+        <button class="btn btn-primary" onclick="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
         <script>
         function goBack() {
           window.history.back();
         }
         </script>
-        <form method="POST" action="/lists/<%= list.id %>">
+        <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
+          <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> gift</a>
+          <form method="POST" action="/lists/<%= list.id %>">
           <input type="hidden" name="_method" value="DELETE">
-          <button class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete gift</button>
-        </form>
-
-        <% list.comments.forEach((comment) => { %>
-          <p>Suggestion by: <%= comment.createdBy.username %><br><%= comment.content %></p>
-          <p></p>
-          <% if(locals.isLoggedIn && comment.createdBy.id.toString() === locals.user._id.toString()) { %>
-            <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/<%= comment.id %>">
-            <input type="hidden" name="_method" value="DELETE">
-            <button>Delete</button>
-            </form>
-            <% } %>
-            <% }) %>
-
-            <% if(locals.isLoggedIn) { %>
-              <section>
-              <h4>Make a suggestion: </h4>
-              <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/">
-              <textarea name="content" id="content" placeholder="Suggestion"></textarea>
-              <button class="button">Add</button>
+          <button class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i>  gift</button>
+          </form>
+          <% } %>
+          <% list.comments.forEach((comment) => { %>
+            <p>Suggestion by: <%= comment.createdBy.username %><br><%= comment.content %></p>
+            <p></p>
+            <% if(locals.isLoggedIn && comment.createdBy.id.toString() === locals.user._id.toString()) { %>
+              <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/<%= comment.id %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button>Delete</button>
               </form>
-              </section>
               <% } %>
+              <% }) %>
+
+              <% if(locals.isLoggedIn) { %>
+                <section>
+                <h4>Make a suggestion: </h4>
+                <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/">
+                <textarea name="content" id="content" placeholder="Suggestion"></textarea>
+                <button class="button">Add</button>
+                </form>
+                </section>
+                <% } %>
               </div>
             </div>
           </div>

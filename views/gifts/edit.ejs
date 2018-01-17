@@ -6,7 +6,7 @@
         <input type="hidden" name="_method" value="PUT">
 
         <div>
-          <label for="name">Name:</label>
+          <label for="name">For:</label>
           <input class="form-control" type="text" name="name" id="name" value="<%= gift.name %>">
         </div>
         <div>
@@ -25,7 +25,7 @@
           <label for="ideas">Ideas:</label>
           <input class="form-control" type="text" name="ideas" id="ideas" value="<%= gift.ideas %>">
         </div>
-        <a href="/lists" class="btn btn-primary">Back to lists</a>
+        <a href="/lists" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> to lists</a>
         <button class="btn btn-primary">Update</button>
       </form>
         </div>
@@ -33,7 +33,7 @@
     </div>
     <form class="form-group" method="POST" action="/lists/<%= listId %>/gifts/<%= gift.id %>">
       <input class="btn btn-primary" type="hidden" name="_method" value="DELETE">
-      <button class="btn btn-primary">Delete gift</button>
+      <button class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i> gift</button>
     </form>
   </div>
 </div>
