@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: String,
   email: String,
-  password: { type: String, required: true }
+  password: { type: String, required: true, trim: true, unique: true }
 });
 
 userSchema.virtual('passwordConfirmation')

@@ -214,6 +214,23 @@ function showGiftRoute(req, res, next) {
     .catch(next);
 }
 
+function helpShowRoute(req, res) {
+  List
+    .findById(req.params.id)
+    .populate('createdBy')
+    .exec()
+    .then((list) => {
+      console.log(gift);
+      if(!list) return res.status(404).send('Not found');
+      const gift = list.gifts.id(req.parmams.giftId);
+      res.render('gifts/help', { gift, list });
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+}
+
+
 
 
 module.exports = {
@@ -231,7 +248,8 @@ module.exports = {
   editGift: editGiftRoute,
   deleteGift: deleteGiftRoute,
   updateGift: updateGiftRoute,
-  showGift: showGiftRoute
+  showGift: showGiftRoute,
+  helpShow: helpShowRoute
 };
 
 

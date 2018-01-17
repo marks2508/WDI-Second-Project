@@ -51,6 +51,9 @@ router.route('/lists/:id/gifts/:giftId')
   .put(lists.updateGift)
   .delete(lists.deleteGift);
 
+router.route('/lists/help')
+  .get(lists.helpShow);
+
 router.route('/register')
   .get(registrations.new) // Render the register form
   .post(registrations.create); // Handle the submit of the register form
