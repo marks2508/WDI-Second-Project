@@ -104,7 +104,7 @@ function createCommentRoute(req,res,next) {
       return list.save();
     })
     .then((list) => {
-      res.redirect(`/lists/${list.id}`);
+      res.redirect(`/lists/${list.id}/gifts/${req.params.giftId}`);
     })
     .catch((err) => {
       if(err.name === 'ValidationError') {
@@ -125,7 +125,7 @@ function deleteCommentRoute(req,res,next) {
       return list.save();
     })
     .then((list) => {
-      res.redirect(`/lists/${list.id}`);
+      res.redirect(`/lists/${list.id}/gifts/${req.params.giftId}`);
     })
     .catch(next);
 }
@@ -214,16 +214,25 @@ function showGiftRoute(req, res, next) {
     .catch(next);
 }
 
-function helpShowRoute(req, res) {
+
+
+function showHelpRoute(req, res) {
+  console.log('work');
   List
-    .findById(req.params.id)
+    .find()
     .populate('createdBy')
     .exec()
-    .then((list) => {
-      console.log(gift);
-      if(!list) return res.status(404).send('Not found');
-      const gift = list.gifts.id(req.parmams.giftId);
-      res.render('gifts/help', { gift, list });
+    .then((lists) => {
+
+      const giftArray = [];
+
+      lists.forEach(list => {
+        list.gifts.forEach( gift => {
+          giftArray.push(gift);
+        });
+      });
+
+      res.render('lists/help', { giftArray });
     })
     .catch((err) => {
       res.status(500).render('error', { err });
@@ -249,7 +258,7 @@ module.exports = {
   deleteGift: deleteGiftRoute,
   updateGift: updateGiftRoute,
   showGift: showGiftRoute,
-  helpShow: helpShowRoute
+  showHelp: showHelpRoute
 };
 
 

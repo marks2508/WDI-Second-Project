@@ -26,8 +26,8 @@
         <% list.comments.forEach((comment) => { %>
           <p><%= comment.content %></p>
           <p><%= comment.createdBy.username %></p>
-          <% if(locals.isLoggedIn) { %>
-            <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
+          <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+            <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/<%= comment.id %>">
             <input type="hidden" name="_method" value="DELETE">
             <button>Delete</button>
             </form>
@@ -37,7 +37,7 @@
             <% if(locals.isLoggedIn) { %>
               <section>
               <h4>Make a suggestion: </h4>
-              <form method="POST" action="/lists/<%= list.id %>/comments/">
+              <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/">
               <textarea name="content" id="content" placeholder="Suggestion"></textarea>
               <button class="button">Add</button>
               </form>

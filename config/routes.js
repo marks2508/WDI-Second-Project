@@ -4,6 +4,7 @@ const statics = require('../controllers/statics');
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
 const lists = require('../controllers/lists');
+const users = require('../controllers/users');
 
 function secureRoute(req, res, next) {
   if (!req.session.userId) {
@@ -21,6 +22,9 @@ router.route('/lists')
   .get(lists.index)
   .post(lists.create);
 
+router.route('/lists/help')
+  .get(lists.showHelp);
+
 router.route('/lists/new')
   .get(lists.new);
 
@@ -31,10 +35,10 @@ router.route('/lists/:id')
 
 router.get('/lists/:id/edit', secureRoute, lists.edit);
 
-router.route('/lists/:id/comments')
+router.route('/lists/:id/gifts/:giftId/comments')
   .post(lists.createComment);
 
-router.route('/lists/:id/comments/:commentId')
+router.route('/lists/:id/gifts/:giftId/comments/:commentId')
   .delete(lists.deleteComment);
 
 router.route('/lists/:id/gifts/new')
@@ -51,8 +55,6 @@ router.route('/lists/:id/gifts/:giftId')
   .put(lists.updateGift)
   .delete(lists.deleteGift);
 
-router.route('/lists/help')
-  .get(lists.helpShow);
 
 router.route('/register')
   .get(registrations.new) // Render the register form
@@ -64,6 +66,13 @@ router.route('/login')
 
 router.route('/logout')
   .get(sessions.delete);
+
+
+router.route('/users')
+  .get(users.index);
+
+router.route('/users/:id')
+  .get(users.show);
 
 // We will protect this route so that you can only access it if you're logged in
 router.route('/secret')
