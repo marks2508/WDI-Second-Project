@@ -24,9 +24,9 @@
         </form>
 
         <% list.comments.forEach((comment) => { %>
-          <p><%= comment.content %></p>
-          <p><%= comment.createdBy.username %></p>
-          <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+          <p>Suggestion by: <%= comment.createdBy.username %><br><%= comment.content %></p>
+          <p></p>
+          <% if(locals.isLoggedIn && comment.createdBy.id.toString() === locals.user._id.toString()) { %>
             <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/<%= comment.id %>">
             <input type="hidden" name="_method" value="DELETE">
             <button>Delete</button>

@@ -206,6 +206,7 @@ function deleteGiftRoute(req, res, next) {
 function showGiftRoute(req, res, next) {
   List
     .findById(req.params.id)
+    .populate('comments.createdBy')
     .exec()
     .then(list => {
       const gift = list.gifts.id(req.params.giftId);

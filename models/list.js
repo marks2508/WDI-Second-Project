@@ -14,7 +14,7 @@ const commentSchema = new mongoose.Schema({
 });
 
 commentSchema.methods.belongsTo = function commentBelongsTo(user) {
-  return this.createdBy.id === user.id;
+  return this.createdBy.id === user._id;
 };
 
 const listSchema = new mongoose.Schema({
@@ -25,7 +25,7 @@ const listSchema = new mongoose.Schema({
 });
 
 listSchema.methods.belongsTo = function belongsTo(user) {
-  return this.createdBy.id === user.id;
+  return this.createdBy.id === user._id;
 };
 
 module.exports = mongoose.model('List', listSchema);

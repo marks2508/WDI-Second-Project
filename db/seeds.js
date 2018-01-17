@@ -38,9 +38,15 @@ User
         createdBy: users[1]
       }, {
         name: 'Anniverseries',
-        createdBy: users[1]
+        createdBy: users[1],
+        gifts: [{
+          name: 'Dad',
+          age: '69',
+          interests: 'art',
+          budget: '99',
+          idea: 'books, cd, clothes'
+        }]
       }]);
   })
-  .then((lists) => console.log(`${lists.length} lists created`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
