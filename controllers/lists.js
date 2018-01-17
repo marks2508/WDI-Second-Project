@@ -3,7 +3,7 @@ const Gift = require('../models/list');
 
 function listsIndex(req, res) {
   List
-    .find()
+    .find({ createdBy: req.user.id })
     .exec()
     .then((lists) => {
       res.render('lists', { lists });

@@ -10,7 +10,9 @@
           <div class="card-body"
           <h4><%= gift.name %></h4>
           <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-primary">see gift</a>
+          <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
           <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary">edit gift</a>
+          <% } %>
           </div>
 
 

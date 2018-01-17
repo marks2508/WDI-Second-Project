@@ -25,7 +25,7 @@ const listSchema = new mongoose.Schema({
 });
 
 listSchema.methods.belongsTo = function belongsTo(user) {
-  return this.createdBy.id === user._id;
+  return user._id.equals(this.createdBy.id);
 };
 
 module.exports = mongoose.model('List', listSchema);
