@@ -30,7 +30,7 @@
             <% if(locals.isLoggedIn && comment.createdBy.id.toString() === locals.user._id.toString()) { %>
               <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/<%= comment.id %>">
               <input type="hidden" name="_method" value="DELETE">
-              <button>Delete</button>
+              <button class="btn btn-primary">Delete</button>
               </form>
               <% } %>
               <% }) %>
@@ -39,8 +39,9 @@
                 <section>
                 <h4>Make a suggestion: </h4>
                 <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/">
+                <button class="btn btn-primary">Add</button>
+
                 <textarea name="content" id="content" placeholder="Suggestion"></textarea>
-                <button class="button">Add</button>
                 </form>
                 </section>
                 <% } %>

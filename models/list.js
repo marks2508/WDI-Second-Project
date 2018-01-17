@@ -4,7 +4,7 @@ const giftSchema = new mongoose.Schema({
   name: {type: String},
   age: {type: Number},
   interests: {type: Array},
-  budget: {type: Number},
+  budget: {type: String},
   ideas: {type: Array}
 });
 

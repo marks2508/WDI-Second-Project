@@ -10,17 +10,18 @@
           <div class="card-body"
           <h4><%= gift.name %></h4>
           <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> gift</a>
-          <a href="/lists" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> to lists</a>
           <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
           <% } %>
           </div>
           <% }) %>
           <div class="card-body">
             <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
+              <a href="/lists/<%= list.id %>/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> list</a>
 
             <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> gift</a>
-            <a href="/lists/<%= list.id %>/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> list</a>
             <% } %>
+            <a href="/lists" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> to lists</a>
+
           </div>
         </div>
       </div>
