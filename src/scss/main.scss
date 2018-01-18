@@ -25,3 +25,9 @@ h1 {
   background-size: 1225 px 400px;
   color: white;
 }
+
+.form-group {
+  & .beta {
+    margin-top: 20px;
+  }
+}
