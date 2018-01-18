@@ -1,7 +1,7 @@
 <% lists.forEach(list => { %>
 
   <div class="container-fluid">
-  <div class="row"
+  <div class="row">
   <div class="col-md-4">
   <div class="card">
   <h3 class="card-header"><%= list.name %></h3>
@@ -9,10 +9,6 @@
   <div class="card-footer">
   <a href="/lists/<%= list.id %>" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> see list</a>
   <a href="/users" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-  <script>
-  function goBack() {
-    window.history.back();
-  }
   </div>
   </div>
   </div>

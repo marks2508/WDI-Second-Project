@@ -1,11 +1,15 @@
 <div class="container"
 <div class="row">
+<div class="col-4">
+  <br>
+  <h1><%= list.name %></h1>
+</div>
+<br>
   <div class="col-12 new-list-container">
-    <h1><%= list.name %></h1>
-    <a href="/lists" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> to lists</a>
+    <a href="/lists" class="btn btn-outline-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> to lists</a>
     <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
-      <a href="/lists/<%= list.id %>/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> rename list</a>
-      <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> gift</a>
+      <a href="/lists/<%= list.id %>/edit" class="btn btn-outline-secondary"><i class="fa fa-pencil" aria-hidden="true"></i> rename list</a>
+      <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-outline-success"><i class="fa fa-plus" aria-hidden="true"></i> a gift</a>
       <% }  %>
   </div>
 </div>
@@ -17,12 +21,12 @@
         <div class="col-md-4">
           <div class="card">
             <h4 class="card-header"><%= gift.name %></h4>
-              <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> see gift</a>
+              <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-outline-primary"><i class="fa fa-eye" aria-hidden="true"></i> see gift</a>
             </h3>
             <div class="card-footer">
               <form method="POST" action="/lists/<%= list.id %>">
                 <input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i>  delete gift</button>
+                <button class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>  delete gift</button>
               </form>
             </div>
           </div>

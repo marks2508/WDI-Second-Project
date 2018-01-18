@@ -7,19 +7,18 @@
         <h5 class="card-body"><b><ins>Their interests:</ins></b><br><br> <%= gift.interests %></h5>
         <h5 class="card-body"><b><ins>Budget:<ins></b><br><br> <%= gift.budget %></h5>
         <h5 class="card-body"><b><ins>Ideas: <ins></b><br><br><%= gift.ideas %></h5>
-            <a href="/lists/<%= list.id %>" class="btn btn-primary" ><i class="fa fa-arrow-left" aria-hidden="true"></i> to list</a>
-            <script>
-            function goBack() {
-              window.history.back();
-            }
-            </script>
+          <div class="card-footer">
+            <a href="/lists/<%= list.id %>" class="btn btn-outline-primary" ><i class="fa fa-arrow-left" aria-hidden="true"></i> to list</a>
+
             <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
-              <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> edit gift</a>
+              <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>/edit" class="btn btn-outline-secondary"><i class="fa fa-pencil" aria-hidden="true"></i> edit gift</a>
               <form method="POST" action="/lists/<%= list.id %>">
               <input type="hidden" name="_method" value="DELETE">
-              <button class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i>  delete gift</button>
+              <br>
+              <button class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>  delete gift</button>
               </form>
               <% } %>
+            </div>
             </div>
           </div>
           <div class="col-md-4">
@@ -32,7 +31,7 @@
                 <form class="form-group" method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/">
                   <textarea class="form-control" name="content" id="content" placeholder="Suggestion"></textarea>
                   <br>
-                  <button class="btn btn-primary">Add</button>
+                  <button class="btn btn-outline-success">add comment</button>
                 </form>
               </section>
               <% } %>
@@ -41,7 +40,7 @@
                   <% if(locals.isLoggedIn && comment.createdBy.id.toString() === locals.user._id.toString()) { %>
                     <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/<%= comment.id %>">
                     <input type="hidden" name="_method" value="DELETE">
-                    <button class="btn btn-primary">Delete</button>
+                    <button class="btn btn-outline-danger">delete comment</button>
                     </form>
                   <% } %>
               <% }) %>
