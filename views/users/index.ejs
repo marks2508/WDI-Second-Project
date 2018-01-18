@@ -1,16 +1,16 @@
 
 
-<% users.forEach(user => { %>
 
-  <div class="container-fluid">
+<div class="container">
   <div class="row">
-  <div class="col-md-4">
+  <% users.forEach(user => { %>
+  <div class="col-3 ">
   <div class="card">
-  <div class="card-body">
-  <a href="/users/<%= user.id %>"class="card-header"><%= user.username %>'s list</a>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  <% }) %>
+  <h4 class="card-header"><%= user.username %></h4>
+  <a class="card-body" href="/users/<%= user.id %>"><i class="fa fa-eye" aria-hidden="true"></i> See their list</a>
+
+</div>
+</div>
+<% }) %>
+</div>
+</div>
