@@ -1,16 +1,23 @@
 <h1>Make gift suggestions</h1>
 
 
-
-
 <% lists.forEach(list => { %>
-  <div class="card-body"
-  <h4><%= list.name %></h4>
-  <a href="/lists/<%= list.id %>" class="btn btn-primary">See list</a>
+
+  <div class="container-fluid">
+  <div class="row"
+  <div class="col-md-4">
+  <div class="card">
+  <div class="card-body">
+  <h4 class="card-header"><%= list.name %></h4>
+  <a href="/lists/<%= list.id %>" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> see list</a>
   <button class="btn btn-primary" onclick="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
   <script>
   function goBack() {
     window.history.back();
   }
-  </script>
-<% }) %>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <% }) %>

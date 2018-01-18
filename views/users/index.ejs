@@ -1,9 +1,16 @@
-<h1>Help others by make gift suggestions</h1>
 
 
+<% users.forEach(user => { %>
 
-<% users.forEach((user) => { %>
-  <a href="/users/<%= user.id %>">
-   <h3 class="card-header"><%= user.username %></h3>
-  </a>
-<% }); %>
+  <div class="container-fluid">
+  <div class="row">
+  <div class="col-md-4">
+  <div class="card">
+  <div class="card-body">
+  <a href="/users/<%= user.id %>"class="card-header"><%= user.username %>'s list</a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <% }) %>

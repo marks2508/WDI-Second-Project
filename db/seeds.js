@@ -80,9 +80,39 @@ User
           budget: '99',
           idea: 'books, cd, clothes'
         }]
-      },{
+      }, {
         name: 'Christmas 2018',
         createdBy: users[2],
+        gifts: [{
+          name: 'Sister',
+          age: '17',
+          interests: 'Reading, seeing friends',
+          budget: '30',
+          ideas: 'Autumn by Ali Smith'
+        }]
+      }, {
+        name: 'Kids birthdays',
+        createdBy: users[3],
+        gits: [{
+          name: 'Sister',
+          age: '17',
+          interests: 'Reading, seeing friends',
+          budget: '30',
+          ideas: 'Autumn by Ali Smith'
+        }]
+      }, {
+        name: 'Chanukah 2018',
+        createdBy: users[4],
+        gifts: [{
+          name: 'Steve',
+          age: '47',
+          interests: 'Movies, Arsenal',
+          budget: '30',
+          ideas: 'Autumn by Ali Smith'
+        }]
+      }, {
+        name: 'Christmas 2018',
+        createdBy: users[5],
         gifts: [{
           name: 'Sister',
           age: '17',

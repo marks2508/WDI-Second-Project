@@ -13,5 +13,8 @@ h1 {
   }
 }
 .jumbotron {
-  height: 20px;
+  background-image: url('../src/images/img-gift.jpg');
+  background-position: center;
+  background-size: cover;
+  color: white;
 }

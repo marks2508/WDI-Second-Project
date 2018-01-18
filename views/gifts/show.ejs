@@ -1,16 +1,13 @@
-<h1><%= gift.name %></h1>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body"
-        <h2>Who for: <%= gift.name %></h4>
-        <h4>Their age: <%= gift.age %></h4>
-        <h4>Their interests: <%= gift.interests %></h4>
-        <h4>Budget: <%= gift.budget %></h4>
-        <h4>Ideas: <%= gift.ideas %></h4>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-body">
+<h4 class="card-header">For: <%= gift.name %></h4>
+        <h5 class="card-body"><b><ins>Their age:</ins></b><br><br> <%= gift.age %></h5>
+        <h5 class="card-body"><b><ins>Their interests:</ins></b><br><br> <%= gift.interests %></h5>
+        <h5 class="card-body"><b><ins>Budget:<ins></b><br><br> <%= gift.budget %></h5>
+        <h5 class="card-body"><b><ins>Ideas: <ins></b><br><br><%= gift.ideas %></h5>
         <button class="btn btn-primary" onclick="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
         <script>
         function goBack() {
@@ -26,7 +23,6 @@
           <% } %>
           <% list.comments.forEach((comment) => { %>
             <p>Suggestion by: <%= comment.createdBy.username %><br><%= comment.content %></p>
-            <p></p>
             <% if(locals.isLoggedIn && comment.createdBy.id.toString() === locals.user._id.toString()) { %>
               <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/<%= comment.id %>">
               <input type="hidden" name="_method" value="DELETE">
@@ -34,6 +30,11 @@
               </form>
               <% } %>
               <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
               <% if(locals.isLoggedIn) { %>
                 <section>
@@ -45,7 +46,3 @@
                 </form>
                 </section>
                 <% } %>
-              </div>
-            </div>
-          </div>
-        </div>
