@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const giftSchema = new mongoose.Schema({
-  name: {type: String},
-  age: {type: Number},
+  name: {type: String, required: true},
+  age: {type: Number, required: true},
   interests: {type: Array},
-  budget: {type: String},
+  budget: {type: String, required: true},
   ideas: {type: Array}
 });
 
