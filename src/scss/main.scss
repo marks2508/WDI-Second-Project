@@ -1,3 +1,8 @@
+@import 'views/lists/index';
+@import 'views/lists/show';
+
+
+
 h1 {
   text-align: center;
 }
@@ -12,9 +17,11 @@ h1 {
 
   }
 }
-.jumbotron {
-  background-image: url('../src/images/img-gift.jpg');
+
+.layout-header {
+  height: 400px;
+  background-image: url('../images/img-gift.jpg');
   background-position: center;
-  background-size: cover;
+  background-size: 1225 px 400px;
   color: white;
 }
