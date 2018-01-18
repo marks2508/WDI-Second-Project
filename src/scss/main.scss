@@ -19,10 +19,10 @@ h1 {
 }
 
 .layout-header {
-  height: 400px;
-  background-image: url('../images/img-gift.jpg');
-  background-position: center;
-  background-size: 1225 px 400px;
+  height: 350px;
+  background: #2980b9;
+  background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);
+  background: linear-gradient(to right, #2c3e50, #2980b9);
   color: white;
 }
 
@@ -30,4 +30,8 @@ h1 {
   & .beta {
     margin-top: 20px;
   }
+}
+
+.jumbo-text {
+  text-align: center;
 }

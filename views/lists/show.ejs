@@ -4,7 +4,7 @@
     <h1><%= list.name %></h1>
     <a href="/lists" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> to lists</a>
     <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
-      <a href="/lists/<%= list.id %>/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> list</a>
+      <a href="/lists/<%= list.id %>/edit" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> rename list</a>
       <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> gift</a>
       <% }  %>
   </div>
