@@ -30,7 +30,7 @@
                 <% if(locals.isLoggedIn) { %>
                 <h4 class="card-header">Make a suggestion: </h4>
                 <form class="form-group" method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/">
-                  <textarea name="content" id="content" placeholder="Suggestion"></textarea>
+                  <textarea class="form-control" name="content" id="content" placeholder="Suggestion"></textarea>
                   <br>
                   <button class="btn btn-primary">Add</button>
                 </form>
