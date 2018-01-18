@@ -21,7 +21,9 @@
         <div class="col-md-4">
           <div class="card">
             <h4 class="card-header"><%= gift.name %></h4>
+            <br>
               <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-outline-primary"><i class="fa fa-eye" aria-hidden="true"></i> see gift</a>
+              <br>
             </h3>
             <div class="card-footer">
               <form method="POST" action="/lists/<%= list.id %>">
