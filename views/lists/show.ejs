@@ -10,6 +10,8 @@
     <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
       <a href="/lists/<%= list.id %>/edit" class="btn btn-outline-secondary"><i class="fa fa-pencil" aria-hidden="true"></i> rename list</a>
       <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-outline-success"><i class="fa fa-plus" aria-hidden="true"></i> a gift</a>
+      <br>
+      <br>
       <% }  %>
   </div>
 </div>
