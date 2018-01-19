@@ -27,8 +27,8 @@
 }
 
 .form-group {
-  font-family: $font
-  & .beta {
+  font-family: $font;
+  &.beta {
     margin-top: 20px;
   }
 }

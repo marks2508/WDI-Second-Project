@@ -9,13 +9,17 @@
               <p class="card-text">Gifts in list: <%= list.gifts.length %></p>
             </div>
             <div class="card-footer">
+            <a href="/lists/<%= list.id %>" class="btn btn-outline-primary"><i class="fa fa-eye" aria-hidden="true"></i> see list</a>
+
+              <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
               <a href="/lists/<%= list.id %>/gifts/new" class="btn btn-outline-success"><i class="fa fa-plus" aria-hidden="true"></i>   gift</a>
-              <a href="/lists/<%= list.id %>" class="btn btn-outline-primary"><i class="fa fa-eye" aria-hidden="true"></i> see list</a>
               <form method="POST" action="/lists/<%= list.id %>">
                 <input type="hidden" name="_method" value="DELETE">
                 <br>
                 <button class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>   list</button>
               </form>
+              <% }  %>
+
             </div>
           </div>
         </div>

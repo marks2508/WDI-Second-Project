@@ -26,10 +26,14 @@
               <br>
             </h3>
             <div class="card-footer">
+            <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
+
               <form method="POST" action="/lists/<%= list.id %>">
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>  delete gift</button>
               </form>
+              <% }  %>
+
             </div>
           </div>
         </div>
