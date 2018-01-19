@@ -1,5 +1,3 @@
-
-
 a {
   font-family: $font;
 }
@@ -10,6 +8,7 @@ button {
   }
   &.btn-outline-primary {
     font-family: $font;
+  }
 }
 
 h1, h2, h3, h4, h5  {
@@ -43,6 +42,7 @@ textarea {
 .card-body {
   font-family: $font;
 }
+
 .card-header {
   font-family: $font;
 }
