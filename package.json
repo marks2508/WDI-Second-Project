@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+     "start": "node server.js",
+     "postinstall": "gulp build",
+     "seed": "node db/seeds"
+  },
+  "engines": {
+    "node": "9.2.0"
   },
   "author": "",
   "license": "ISC",

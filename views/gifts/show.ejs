@@ -29,7 +29,7 @@
                 <% if(locals.isLoggedIn) { %>
                 <h3 class="card-header">Make a suggestion: </h3>
                 <% list.comments.forEach((comment) => { %>
-                    <p><b>Suggestion by:</b> <%= comment.createdBy.username %><br><br><%= comment.content %></p>
+                    <p class="card-body"><b>Suggestion by:</b> <%= comment.createdBy.username %><br><br><%= comment.content %></p>
                     <% if(locals.isLoggedIn && comment.createdBy.id.toString() === locals.user._id.toString()) { %>
                       <form method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/<%= comment.id %>">
                       <input type="hidden" name="_method" value="DELETE">

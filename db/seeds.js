@@ -120,6 +120,24 @@ User
           budget: '30',
           ideas: 'Autumn by Ali Smith'
         }]
+      }, {
+        name: 'Kids birthdays',
+        createdBy: users[0],
+        gifts: [{
+          name: 'Bob',
+          age: 7,
+          interests: 'economics, philosophy and maths',
+          ideas: 'one-way ticket to yemen'
+        }]
+      }, {
+        name: 'Easter',
+        createdBy: users[4],
+        gifts: [{
+          name: 'Bubba',
+          age: 67,
+          interests: 'playdo and crayons',
+          ideas: 'frying pan'
+        }]
       }]);
   })
   .catch((err) => console.log(err))
