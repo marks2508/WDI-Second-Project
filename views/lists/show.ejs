@@ -2,7 +2,7 @@
 <div class="row">
 <div class="col-4">
   <br>
-  <h1><%= list.name %></h1>
+  <h3><%= list.name %> list</h3>
 </div>
 <br>
   <div class="col-12 new-list-container">
@@ -20,7 +20,7 @@
       <% list.gifts.forEach(gift => { %>
         <div class="col-md-4">
           <div class="card">
-            <h4 class="card-header"><%= gift.name %></h4>
+            <h3 class="card-header"><%= gift.name %></h3>
             <br>
               <a href="/lists/<%= list.id %>/gifts/<%= gift.id %>" class="btn btn-outline-primary"><i class="fa fa-eye" aria-hidden="true"></i> see gift</a>
               <br>

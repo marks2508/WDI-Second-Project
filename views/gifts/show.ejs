@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-md-4">
       <div class="card">
-        <h4 class="card-header">For: <%= gift.name %></h4>
-        <h5 class="card-body"><b><ins>Their age:</ins></b><br><br> <%= gift.age %></h5>
-        <h5 class="card-body"><b><ins>Their interests:</ins></b><br><br> <%= gift.interests %></h5>
-        <h5 class="card-body"><b><ins>Budget:<ins></b><br><br> <%= gift.budget %></h5>
-        <h5 class="card-body"><b><ins>Ideas: <ins></b><br><br><%= gift.ideas %></h5>
+        <h3 class="card-header">For: <%= gift.name %></h3>
+        <p class="card-body"><b><ins>Their age:</ins></b><br><br> <%= gift.age %></p>
+        <p class="card-body"><b><ins>Their interests:</ins></b><br><br> <%= gift.interests %></p>
+        <p class="card-body"><b><ins>Budget:<ins></b><br><br> <%= gift.budget %></p>
+        <p class="card-body"><b><ins>Ideas: <ins></b><br><br><%= gift.ideas %></p>
           <div class="card-footer">
             <a href="/lists/<%= list.id %>" class="btn btn-outline-primary" ><i class="fa fa-arrow-left" aria-hidden="true"></i> to list</a>
 
@@ -27,7 +27,7 @@
             <div class="card">
               <section>
                 <% if(locals.isLoggedIn) { %>
-                <h4 class="card-header">Make a suggestion: </h4>
+                <h3 class="card-header">Make a suggestion: </h3>
                 <form class="form-group" method="POST" action="/lists/<%= list.id %>/gifts/<%= gift.id %>/comments/">
                   <textarea class="form-control" name="content" id="content" placeholder="Suggestion"></textarea>
                   <br>

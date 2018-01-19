@@ -4,46 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>Gift List</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link rel="stylesheet" href="/css/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  <% include ./partials/_stylesheets.ejs %>
+  <% include ./partials/_scripts.ejs %>
 </head>
   <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="/"><i class="fa fa-gift" aria-hidden="true"></i> Gift List</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <% if (locals.isLoggedIn) { %>
-            <a class="nav-item nav-link" href="/lists">My lists</a>
-            <a class="nav-item nav-link" href="/users">Help others</a>
-            <a class="nav-item nav-link pull-right" href="/logout"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
-            <% } %>
-          </div>
-        </div>
-      </nav>
-      <div class="jumbotron jumbotron-fluid layout-header">
-        <div class="container">
-          <div class="row">
-            <div class="offset-md-1">
-              <h1 class="display-4 jumbo-text">Welcome to Gift List</h1>
-              <p class="lead jumbo-lead-text">Taking the pain out of present buying</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="jumbotron">
-      <h1 class="display-4">Welcome to the Gift List</h1>
-      <p class="lead">Make present buying easier and more fun</p>
-    </div> -->
+    <% include ./partials/_navbar.ejs %>
     <main class="container">
       <% if (messages) { %>
         <div>
@@ -52,7 +17,6 @@
           <% } %>
         </div>
       <% } %>
-
       <%- body %>
     </main>
   </body>

@@ -6,7 +6,7 @@
   <% users.forEach(user => { %>
   <div class="col-3 ">
   <div class="card">
-  <h4 class="card-header"><%= user.username %></h4>
+  <h3 class="card-header"><i class="fa fa-user" aria-hidden="true"></i> <%= user.username %></h3>
   <a class="card-body" href="/users/<%= user.id %>"><i class="fa fa-eye" aria-hidden="true"></i> See their list</a>
 
 </div>

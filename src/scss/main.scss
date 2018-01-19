@@ -1,10 +1,10 @@
 @import 'views/lists/index';
 @import 'views/lists/show';
+@import 'partials/typography';
+@import 'helpers/variables';
 
 
 
-h1 {
-  text-align: center;
 }
 .card {
   margin-top: 30px;
@@ -27,6 +27,7 @@ h1 {
 }
 
 .form-group {
+  font-family: $font
   & .beta {
     margin-top: 20px;
   }
@@ -34,4 +35,8 @@ h1 {
 
 .jumbo-text {
   text-align: center;
+}
+
+.login {
+  font-family: $font;
 }
