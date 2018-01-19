@@ -43,3 +43,5 @@ gulp.task('default', ['sass', 'js', 'images', 'serve'], () => {
   gulp.watch('src/images/**/*.{jpg,jpeg,png,gif,svg,ico}', ['images']);
   gulp.watch('views/**/*.ejs', browserSync.reload);
 });
+
+gulp.task('deploy', ['sass', 'js', 'images']);
