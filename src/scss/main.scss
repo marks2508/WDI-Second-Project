@@ -12,12 +12,13 @@
 }
 
 .btn {
+font-family: $font;
   &.btn-primary {
     margin: 10px;
     font-family: 'Helvetica';
   }
   &.btn-outline-primary {
-    font-family: 'Helvetica'; 
+    font-family: 'Helvetica';
   }
 }
 
