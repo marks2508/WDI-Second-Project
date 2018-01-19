@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
      "seed": "node db/seeds",
+     "start": "node index.js",
      "postinstall": "gulp deploy"
   },
   "engines": {
